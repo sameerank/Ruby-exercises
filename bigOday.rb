@@ -24,19 +24,21 @@ end
 def subsets(ary)
   res = []
   i = 0
+
   while i < ary.length
     res << [ary[i]]
-    ary.drop(i+1).each do |el|
+    ary.drop(i + 1).each do |el|
       res = res + [res.last + [el]]
     end
-
-    i +=1
+    i += 1
   end
+
   res
 end
 
 def better_largest_contig_sum(list)
   largest, contig_sum = 0, 0
+
   list.each do |el|
     if el < 0
       contig_sum = 0

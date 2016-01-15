@@ -18,6 +18,7 @@ end
 
 def okay_two_sum?(ary, target_sum)
   sorted_ary = ary.sort
+
   sorted_ary.each_with_index do |el, index|
     searched_index = bsearch(sorted_ary, target_sum - el)
     return true if searched_index && searched_index != index
@@ -27,10 +28,10 @@ def okay_two_sum?(ary, target_sum)
 end
 
 def two_sum?(ary, target_sum)
-  nums_hash = Hash.new(0)
-  ary.each { |el| nums_hash[el] = (target_sum - el) }
-  nums_hash.each do |key, value|
-    return true if nums_hash.key?(value) && key != value
+  nums_hash = Hash.new
+  ary.each do |el|
+    return true if nums_hash.key?(target_sum - el)
+    nums_hash[el] = nil
   end
 
   false
@@ -48,6 +49,7 @@ def bsearch(ary, target)
   pivot = ary.length / 2
   return pivot if ary[pivot] == target
   left, right = ary.take(pivot), ary.drop(pivot + 1)
+
   if ary[pivot] > target
     bsearch(left, target)
   else

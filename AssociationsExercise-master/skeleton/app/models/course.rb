@@ -21,7 +21,7 @@ class Course < ActiveRecord::Base
     through: :enrollments,
     source: :user
 
-  has_many :prerequisites,
+  belongs_to :prerequisite,
     foreign_key: :prereq_id,
     primary_key: :id,
     class_name: 'Course'

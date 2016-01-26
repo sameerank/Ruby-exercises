@@ -4,6 +4,7 @@
   <% @cats.each do |cat| %>
     <li>
       <%= link_to cat.name, cat_url(cat) %>
+      <%= link_to "Edit", edit_cat_url(cat) %>
     </li>
   <% end %>
 </ul>

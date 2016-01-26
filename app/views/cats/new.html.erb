@@ -7,11 +7,9 @@
   <input name="cat[name]" id="cat_name" type="text">
   <br>
 
-  <!-- this label isn't for anything specific -->
+
   <label>Sex</label>
   <div>
-    <!-- note that both radio buttons have the name `cat[sex]`; that's how
-         they are related -->
     <input name="cat[sex]" id="cat_sex_m" type="radio" value="M">
     <label for="cat_sex_m">Male</label>
     <input name="cat[sex]" id="cat_sex_f" type="radio" value="F">
@@ -26,8 +24,6 @@
   <label for="cat_color">Coat color</label>
   <!-- dropdown -->
   <select name="cat[color]">
-    <!-- `brown` is the value that will be submitted to the server; user is
-         displayed "Brown" as the choice -->
     <option value="brown">Brown</option>
     <option value="black">Black</option>
     <option value="grey">Grey</option>
@@ -42,9 +38,4 @@
 
   <input type="submit" value="Build my cat!">
 
-  <!--
-    Other uncovered input types:
-    hidden field
-    check box
-    -->
 </form>

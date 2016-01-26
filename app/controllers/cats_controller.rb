@@ -21,9 +21,16 @@ class CatsController < ApplicationController
   end
 
   def create
-    @cat = Cat.new(params[:cat])
+    @cat = Cat.new(params[:cat].permit(:name, :birth_date, :color, :sex, :description))
     @cat.save
     redirect_to cat_url(@cat)
   end
 
+  def edit
+    @cat = Cat.find_by(id: params[:id])
+  end
+
+  def update
+    
+  end
 end

@@ -1,0 +1,16 @@
+<!-- app/views/cats/index.html.erb -->
+<h1>List Cats Names</h1>
+<ul>
+  <% @cats.each do |cat| %>
+    <li>
+      <%= link_to cat.name, cat_url(cat) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Create a New Cat", new_cat_path %>
+
+<!-- <form action="" method="post">
+  <input type="text" name="cat[name]">
+  <input type = "submit" value="Create cat">
+</form> -->

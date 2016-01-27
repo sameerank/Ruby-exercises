@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: cats
+#
+#  id          :integer          not null, primary key
+#  birth_date  :date
+#  color       :string
+#  name        :string           not null
+#  sex         :string(1)
+#  description :text
+#
+
 class CatsController < ApplicationController
   def index
     @cats = Cat.all
@@ -21,7 +33,7 @@ class CatsController < ApplicationController
   end
 
   def create
-    @cat = Cat.new(params[:cat].permit(:name, :birth_date, :color, :sex, :description))
+    @cat = Cat.new(cat_params)
     @cat.save
     redirect_to cat_url(@cat)
   end
@@ -32,7 +44,12 @@ class CatsController < ApplicationController
 
   def update
     @cat = Cat.find_by(id: params[:id])
-    @cat.update(params[:cat].permit(:name, :birth_date, :color, :sex, :description))
+    @cat.update(cat_params)
     redirect_to cat_url(@cat)
+  end
+
+  private
+  def cat_params
+    params[:cat].permit(:name, :birth_date, :color, :sex, :description)
   end
 end

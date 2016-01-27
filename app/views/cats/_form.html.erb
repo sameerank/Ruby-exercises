@@ -1,18 +1,13 @@
-
 <% action_url = @cat.persisted? ? cat_url(@cat) : cat_url %>
+<% method = @cat.persisted? ? 'patch' : 'post' %>
 
 <form action="<%= action_url %>" method="post">
 
-  <% if @cat.persisted? %>
-    <input type="hidden" name="_method" value="PATCH">
-  <% end %>
-  <!-- label's `for` attribute connects with the input's `id` attribute-->
+  <input type="hidden" name="_method" value="<%= method %>">
+
   <label for="cat_name">Name</label>
-  <!-- input name `cat[name]` means that Rails will nest the `name` attribute
-       inside a `cat` hash: `{ :cat => { :name => "gizmo" } }` -->
   <input name="cat[name]" id="cat_name" type="text" value=<%= @cat[:name] %>>
   <br>
-
 
   <label>Sex</label>
   <div>
@@ -28,18 +23,18 @@
   <br>
 
   <label for="cat_color">Coat color</label>
-  <!-- dropdown -->
+
   <select name="cat[color]">
-    <option value="brown" <%= "selected" if @cat[:color] == "brown" %>>Brown</option>
-    <option value="black" <%= "selected" if @cat[:color] == "black" %>>Black</option>
-    <option value="grey" <%= "selected" if @cat[:color] == "grey" %>>Grey</option>
-    <option value="gold" <%= "selected" if @cat[:color] == "gold" %>>Gold</option>
-    <option value="white" <%= "selected" if @cat[:color] == "white" %>>White</option>
+    <% Cat::COLORS.each do |color| %>
+    <option value="<%= color %>"
+            <%= "selected" if @cat[:color] == color %>>
+      <%= color.capitalize  %>
+    </option>
+    <% end %>
   </select>
   <br>
 
   <label for="cat_birth_date">Birth date</label>
-  <!-- click on the date will launch a date picker -->
   <input name="cat[birth_date]" id="cat_birth_date" type="date"  value=<%= @cat[:birth_date] %>>
 
   <input type="submit" value="Submit">

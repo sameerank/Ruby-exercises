@@ -1,8 +1,8 @@
-<h1>Make new user</h1>
+<h1>Sign in</h1>
 
 <%= render "shared/errors" %>
 
-<form action="<%= users_url %>" method="post">
+<form action="<%= session_url %>" method="post">
   <input type="hidden"
          name="authenticity_token"
          value="<%= form_authenticity_token %>">
@@ -10,8 +10,7 @@
   <label for="user_email">Email</label>
   <input type="text"
          name="user[email]"
-         id="email"
-         value="<%= @user.email %>">
+         id="email">
   <br>
 
   <label for="user_password">Password</label>

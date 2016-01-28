@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_credentials(email, password)
-    found_user = self.class.find_by(email: email)
+    found_user = self.find_by(email: email)
 
     return nil if found_user.nil?
     found_user.is_password?(password) ? found_user : nil

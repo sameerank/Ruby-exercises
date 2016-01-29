@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :require_no_user!
+  before_action :require_user_to_not_be_signed_in!, only: [:new]
+  before_action :require_user_to_be_signed_in!, only: [:show]
 
   def create
     @user = User.new(user_params)
@@ -19,6 +20,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password)
+  end
+
+  def show
   end
 
 end

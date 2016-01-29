@@ -2,6 +2,8 @@
 
 <%= render "shared/errors" %>
 
+<%# render "shared/form", user: @user, action: :new_user %>
+
 <form action="<%= users_url %>" method="post">
   <input type="hidden"
          name="authenticity_token"

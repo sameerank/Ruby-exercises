@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :require_user_to_be_signed_in!, only: [:destroy]
+  before_action :require_user_to_not_be_signed_in!, only: [:create, :new]
+
   def create
     @user = User.find_by_credentials(
       params[:user][:email],
@@ -9,7 +12,7 @@ class SessionsController < ApplicationController
       render :new
     else
       log_in_user!(@user)
-      render :index
+      redirect_to user_url(@user[:id])
     end
   end
 

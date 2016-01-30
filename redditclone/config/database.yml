@@ -1,0 +1,23 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  timeout: 5000
+
+development:
+  database: redditclone_development
+  adapter: postgresql
+
+test: &TEST
+  database: redditclone_test
+  adapter: postgresql
+
+production:
+  database: redditclone_production
+  adapter: postgresql

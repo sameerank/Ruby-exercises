@@ -41,6 +41,8 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'factory_girl'
   gem 'faker'
+  gem 'launchy'
+  gem 'shoulda-matchers'
 end
 
 group :development do

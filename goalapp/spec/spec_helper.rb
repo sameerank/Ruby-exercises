@@ -52,3 +52,12 @@ def sign_in(username)
   fill_in "Password", with: 'abcdef'
   click_button 'Sign In'
 end
+
+def create_goals
+  sign_up("testing_username")
+  click_link 'New Goal'
+  fill_in 'Title', with: "New years resolution"
+  fill_in 'Body', with: "Learn to program"
+  check 'Make Goal Public'
+  click_button 'Save Goal'
+end

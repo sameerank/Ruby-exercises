@@ -1,0 +1,7 @@
+<h1>Goals</h1>
+<h2><%=  @goal.title %></h2>
+<ul>
+  <li> <%= @goal.body %>
+</ul>
+<%= link_to "Edit Goal", edit_goal_url(@goal) %>
+<%= link_to "Return to Goals", goals_url %>

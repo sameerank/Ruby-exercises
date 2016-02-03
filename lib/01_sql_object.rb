@@ -14,6 +14,10 @@ class SQLObject
   end
 
   def self.finalize!
+    columns.each do |col|
+      define_method("#{col}") { attributes[col] }
+      define_method("#{col}=") { |val| attributes[col] = val }
+    end
   end
 
   def self.table_name=(table_name)
@@ -48,11 +52,11 @@ class SQLObject
   end
 
   def attributes
-    # ...
+    @attributes ||= {}
   end
 
   def attribute_values
-    # ...
+    self.class.columns.map { |key| send("#{key}") }
   end
 
   def insert

@@ -5,13 +5,19 @@ require 'active_support/inflector'
 
 class SQLObject
   def self.columns
-    # ...
+    @columns ||= DBConnection.execute2(<<-SQL).first.map { |col_name| col_name.to_sym}
+    SELECT
+      *
+    FROM
+      #{table_name}
+    SQL
   end
 
   def self.finalize!
   end
 
   def self.table_name=(table_name)
+    @table_name = table_name
   end
 
   def self.table_name
@@ -21,11 +27,16 @@ class SQLObject
   end
 
   def self.all
-    # ...
+    parse_all(DBConnection.execute(<<-SQL))
+      SELECT
+        *
+      FROM
+        #{table_name}
+    SQL
   end
 
   def self.parse_all(results)
-    # ...
+    results.map { |result| new(result) }
   end
 
   def self.find(id)

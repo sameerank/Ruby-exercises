@@ -1,0 +1,14 @@
+<h2>Goals</h2>
+<ul>
+  <% @goals.each do |goal| %>
+  <li>
+    <%= link_to goal.title, goal_url(goal) %>
+    <ul>
+      <li><%= link_to "Edit Goal", edit_goal_url(goal) %></li>
+      <li><%= link_to "Delete Goal", goal_url(goal), method: :delete %></li>
+    </ul>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Goal", new_goal_url %>

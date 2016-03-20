@@ -1,0 +1,19 @@
+<h2>Create New Goal</h2>
+
+<form action=" <%= goals_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label>Title
+  <input type="text" name="goal[title]">
+  </label>
+
+  <label>Body
+  <input type="text" name="goal[body]" >
+  </label>
+
+  <label>Make Goal Public
+  <%= check_box("goal", "public", {}, "true", "false") %>
+  </label>
+
+<input type="submit" value="Save Goal">
+</form>

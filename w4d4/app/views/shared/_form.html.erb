@@ -1,0 +1,23 @@
+<% value_text = !@user.nil? ? @user.email : "" %>
+<% action_url = (action == :new_user) ? users_url : session_url %>
+
+<form action="<%= action_url %>" method="post">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
+  <label for="user_email">Email</label>
+  <input type="text"
+         name="user[email]"
+         id="email"
+         value="<%= value_text %>">
+  <br>
+
+  <label for="user_password">Password</label>
+  <input type="password"
+         name="user[password]"
+         id="password">
+  <br>
+
+  <input type="submit">
+</form>

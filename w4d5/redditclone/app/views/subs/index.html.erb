@@ -1,0 +1,12 @@
+<h1>All the subs</h1>
+<%#= render 'shared/navbar' %>
+<br>
+<% if logged_in? %>
+  <%= button_to "Create sub", new_sub_url, method: :get %>
+<% end %>
+<br>
+<table>
+  <% @subs.each do |sub| %>
+    <tr><td><%= link_to sub.title, sub_url(sub) %></td></tr>
+  <% end %>
+</table>
